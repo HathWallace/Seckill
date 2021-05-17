@@ -184,6 +184,7 @@ public class CookieUtil {
             if (null != request) {// 设置域名的cookie
                 String domainName = getDomainName(request);
                 if (!"localhost".equals(domainName)) {
+                    // 如果域名为localhost，直接设置则会报错
                     System.out.println("Not localhost, can set domain. ");
                     System.out.println("cookie.setDomain(" + domainName + ");");
                     cookie.setDomain(domainName);

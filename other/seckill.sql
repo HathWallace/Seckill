@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80019
 File Encoding         : 65001
 
-Date: 2021-05-12 14:46:15
+Date: 2021-05-17 12:03:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -76,8 +76,8 @@ CREATE TABLE `t_seckill_goods` (
 -- ----------------------------
 -- Records of t_seckill_goods
 -- ----------------------------
-INSERT INTO `t_seckill_goods` VALUES ('1', '1', '629.00', '10', '2021-05-12 08:00:00', '2021-05-12 08:01:00');
-INSERT INTO `t_seckill_goods` VALUES ('2', '2', '929.00', '10', '2021-05-12 08:00:00', '2021-05-12 08:05:00');
+INSERT INTO `t_seckill_goods` VALUES ('1', '1', '629.00', '10', '2021-05-12 08:00:00', '2022-05-12 08:00:00');
+INSERT INTO `t_seckill_goods` VALUES ('2', '2', '929.00', '10', '2021-05-12 08:00:00', '2022-05-12 08:00:00');
 
 -- ----------------------------
 -- Table structure for t_seckill_order
@@ -88,7 +88,8 @@ CREATE TABLE `t_seckill_order` (
   `user_id` bigint DEFAULT NULL COMMENT '用户ID',
   `order_id` bigint DEFAULT NULL COMMENT '订单ID',
   `goods_id` bigint DEFAULT NULL COMMENT '商品ID',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `seckill_uid_gid` (`user_id`,`goods_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------

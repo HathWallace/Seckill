@@ -89,7 +89,10 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         //endregion
 
         //加入redis，防止同一用户抢同种多个商品
-        redisTemplate.opsForValue().set("order:" + user.getId() + ":" + goodsVo.getId(), seckillOrder);
+        redisTemplate.opsForValue().set(
+                String.format("order:%d:%d", user.getId(), goodsVo.getId()),
+                seckillOrder
+        );
 
         return order;
     }

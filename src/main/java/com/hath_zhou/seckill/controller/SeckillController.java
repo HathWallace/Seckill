@@ -64,7 +64,9 @@ public class SeckillController {
         // );
         //endregion
         //redis 判断
-        SeckillOrder seckillOrder = (SeckillOrder) redisTemplate.opsForValue().get("order:" + user.getId() + ":" + goodsVo.getId());
+        SeckillOrder seckillOrder = (SeckillOrder) redisTemplate.opsForValue().get(
+                String.format("order:%d:%d", user.getId(), goodsVo.getId())
+        );
         if (seckillOrder != null) {
             model.addAttribute("errmsg", RespBeanEnum.REPEATE_ERROR.getMessage());
             return "seckillFail";

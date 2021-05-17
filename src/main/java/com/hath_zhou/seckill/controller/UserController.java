@@ -37,7 +37,7 @@ public class UserController {
     @RequestMapping("/examples")//http://localhost:8080/user/examples
     @ResponseBody
     public RespBean createUsers(Model model) {
-        UserUtil.createUser(2000, userMapper);
+        // UserUtil.createUser(2000, userMapper);
         return RespBean.success();
     }
 

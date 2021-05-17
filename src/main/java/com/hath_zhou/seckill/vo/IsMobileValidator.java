@@ -20,6 +20,12 @@ public class IsMobileValidator implements ConstraintValidator<IsMobile, String> 
         required = constraintAnnotation.required();
     }
 
+    /**
+     * 重写验证逻辑
+     * @param value
+     * @param context
+     * @return
+     */
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
         if (!required && StringUtils.isEmpty(value)) {
