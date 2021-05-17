@@ -7,14 +7,9 @@ import com.hath_zhou.seckill.vo.GoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.Date;
 
 /**
@@ -65,6 +60,7 @@ public class GoodsController {
      */
     @RequestMapping("/toList")//http://localhost:8080/goods/toList
     public String toList(Model model, User user) {
+        // if (user == null) return "login";
         model.addAttribute("user", user);
         model.addAttribute("goodsList", goodsService.findGoodsVo());
         return "goodsList";
@@ -72,6 +68,7 @@ public class GoodsController {
 
     /**
      * 商品详情
+     *
      * @param model
      * @param user
      * @param goodsId
@@ -79,13 +76,14 @@ public class GoodsController {
      */
     @RequestMapping("/toDetail/{goodsId}")
     public String toDetail(Model model, User user, @PathVariable Long goodsId) {
+        // if (user == null) return "login";
         model.addAttribute("user", user);
 
         GoodsVo goodsVo = goodsService.findGoodsVoByGoodsId(goodsId);
         Date startDate = goodsVo.getStartDate();
         Date endDate = goodsVo.getEndDate();
-        // Date nowDate = new Date();
-        Date nowDate = new Date(startDate.getTime() - 3000);
+        Date nowDate = new Date();
+        // Date nowDate = new Date(startDate.getTime() - 3000);
         int secKillStatus = -1;
         int remainSeconds = 0;
         if (nowDate.before(startDate)) {

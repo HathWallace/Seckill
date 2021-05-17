@@ -1,5 +1,6 @@
 package com.hath_zhou.seckill.controller;
 
+import com.hath_zhou.seckill.pojo.User;
 import com.hath_zhou.seckill.service.IUserService;
 import com.hath_zhou.seckill.vo.LoginVo;
 import com.hath_zhou.seckill.vo.RespBean;
@@ -7,6 +8,8 @@ import com.hath_zhou.seckill.vo.RespBeanEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
