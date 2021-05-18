@@ -1,6 +1,8 @@
 # Seckill
 个人Java学习项目，以秒杀为项目需求
+
 项目构思与代码来源：[半天带你完全吃透电商项目秒杀系统-SpringBoot、Redis轻松实现Java高并发秒杀系统](https://www.bilibili.com/video/BV1Ma4y1H7KJ)
+
 感谢发布者分享
 
 
@@ -167,11 +169,13 @@
 - Linux使用注意
 
   设置本机与虚拟机( Vmare 下的 CentOS )网络连接的办法：[CentOS 7教程（二）-网络设置](https://zhuanlan.zhihu.com/p/79361590)
+  
   如果需要用可视化工具连接数据库( MySQL 和 Redis )，则需要关闭防火墙
   
 - 生成测试使用的用户信息
 
   原项目单独写了一个静态 Main 函数，连接数据库生成数千条用户数据
+
   但个人觉得写这样的代码过于繁琐，所以决定直接在服务中加一个接口，直接通过 MyBaitsPlus 插入数据。
 
   前端控制器类：`com.hath_zhou.seckill.controller.UserController`
@@ -217,8 +221,9 @@
 - 获取域名
 
   原项目代码有个小 bug，导致在 CentOS 上部署后浏览器获取不到服务端返回的 cookie。
+  
   查明是在 `setCookie` 中从 Web 请求中获取域名时的代码逻辑有误，导致域名的第一位消失(比如域名为 `127.0.0.1`，而通过 `getDomainName` 获取的域名为 `0.0.1` )。Bing 一下后决定直接用 Java 自带的 URL 类来解析域名。
-
+  
   ```java
   URL url = new URL(request.getRequestURL().toString());
   return url.getHost();
