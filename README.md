@@ -25,10 +25,9 @@
   工具类：`com.hath_zhou.seckill.utils.MD5Util`
 
   ```java
-  String src = "" + salt.charAt(0) + salt.charAt(2) + inputPass + salt.charAt(5) + salt.charAt(4); // 加盐
-  String md5 = DigestUtils.md5Hex(src); // MD5加密
+  return md5(addSalt(inputPass, salt)); // 分别封装加盐与md5校验代码
   ```
-
+  
 - 部分参数(如验证手机号格式)，使用 validation 组件校验，简化代码
 
   自定义注解：`com.hath_zhou.seckill.validator.IsMobile`
@@ -224,4 +223,24 @@
   URL url = new URL(request.getRequestURL().toString());
   return url.getHost();
   ```
+
+
+
+## 运行效果
+
+- 基本功能
+
+  ![seckill2](https://raw.githubusercontent.com/HathWallace0/MyPicGo/master/img/seckill2.gif)
+
+- 测试可用性与一致性
+
+  测试文件：`\Seckill\other\seckill.jmx`
+
+  虚拟机配置如图所示
+
+  ![](https://raw.githubusercontent.com/HathWallace0/MyPicGo/master/img/image-20210518121210178.png)
+
+  因为主机的性能不是很好，设置的虚拟机配置也比较低，而且项目本身前后端不分离，没有对性能做进一步的优化，所以吞吐量比较低。但可以看出，基本实现了在一定并发量下的可用性，并且可以保证最终结果符合业务逻辑(比如不会出现库存超卖、同一用户抢多个同一商品的情况)。
+
+  ![test](https://raw.githubusercontent.com/HathWallace0/MyPicGo/master/img/test.gif)
 
