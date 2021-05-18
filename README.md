@@ -150,6 +150,8 @@
 
   验证是否重复抢购
 
+  控制器类：`com.hath_zhou.seckill.controller.SeckillController`
+  
   ```java
   // redis判断
   SeckillOrder seckillOrder = (SeckillOrder) redisTemplate.opsForValue().get(
